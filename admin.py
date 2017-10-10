@@ -36,18 +36,26 @@ class MainHandler(TemplateHandler):
         # render the weather data
 
 
+class PageHandler(TemplateHandler):
+  def get(self, page):
+    self.set_header(
+      'Cache-Control',
+      'no-store, no-cache, must-revalidate, max-age=0')
+    self.render_template(page + '.html', {})
+
+
 def make_app():                                 ##make_app will return the application and all the routing logic within it.
     return tornado.web.Application([
     (r"/", MainHandler),
-    (
-     r"/static/(.*)",                           ##this helps the server find the static folder which goes with all the main files.
+    (r"/weather/(.*)", PageHandler),
+    (r"/static/(.*)",                           ##this helps the server find the static folder which goes with all the main files.
      tornado.web.StaticFileHandler,
      {'path': 'static'}
     ),
     ], autoreload=True)
 
 
-PORT = int(os.environ.get('PORT','1337'))
+PORT = int(os.environ.get('PORT', '1337'))
 if __name__ == "__main__":
     tornado.log.enable_pretty_logging()
 

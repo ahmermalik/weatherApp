@@ -1,7 +1,36 @@
-<div class="search-container">
-  <form action="#">
-    <label for="search" class="visuallyhidden">Search</label>
-    <span><input type="text" results="5" name="search" placeholder="Search&hellip;" class=""></span>
-    <input type="submit" value="Search" class=""/>
-  </form>
-</div>
+{% extends 'base.html'%}
+
+{% block head %}
+    {% endblock %}
+
+
+{% block  content %}
+<h1> Find the weather in any city</h1>
+<form class='search-box'>
+  <p>
+ 	 <input class="input-search" type="text" placeholder="What city are you searching for ?">
+  </p>
+</form>
+
+
+{% endblock %}
+
+
+
+
+{% block script %}
+<script>
+    $(document).ready(function(){
+  $('.input-search').focus(function(){
+    $(this).parent().addClass('expanded');
+  });
+
+  $('.input-search').blur(function(){
+    	$(this).parent().removeClass('expanded');
+  });
+})
+
+
+</script>
+
+{% endblock %}
