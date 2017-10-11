@@ -2,8 +2,8 @@ import os         ##this is wused when you're deploying server. it is ok to add 
 import tornado.ioloop
 import tornado.web
 import tornado.log
-
-##import requests
+#from models import weather
+import requests
 
 from jinja2 import \
   Environment, PackageLoader, select_autoescape                     #This is setting up jinja to know where the python module is located.
@@ -25,16 +25,17 @@ class MainHandler(TemplateHandler):
     self.set_header(
       'Cache-Control',
       'no-store, no-cache, must-revalidate, max-age=0')
-    self.render_template("base.html", {})
 
-  # def post(self):
-  #     pass
-        # get city name
+    self.render_template("home.html", {})
 
-        # lookup the weather
+  def post(self):
+    url = "http://api.openweathermap.org/data/2.5/weather"
 
-        # render the weather data
-
+    city = self.get_body_argument('city_name')
+    querystring = {"q": city, "APIKEY": "c33c99977dff2b8b60a9b4be2d2046fd"}
+    response = requests.get(url, params=querystring)
+    print(response.json())
+    self.render_template("home.html", {'data': response.json()}) ##self.render is the template and the 'data': response.json() is the context.
 
 class PageHandler(TemplateHandler):
   def get(self, page):
