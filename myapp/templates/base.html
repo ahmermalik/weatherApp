@@ -2,6 +2,7 @@
 <html lang="en">
 <head>
 <body>
+    {% block head %}
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
@@ -10,7 +11,8 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito:400,300' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" type="text/css" href="/static/css/admin.css">
     <title>{% block title %}The Weather App{% endblock %}</title>
-    {% block head %}
+
+      {% block headextra%} {% endblock %}
     {% endblock %}
 
 

@@ -45,7 +45,7 @@ class PageHandler(TemplateHandler):
     self.render_template(page + '.html', {})
 
 
-def make_app():                                 ##make_app will return the application and all the routing logic within it.
+def make_app():                                 ##make_app will return the application and sall the routing logic within it.
     return tornado.web.Application([
     (r"/", MainHandler),
     (r"/weather/(.*)", PageHandler),

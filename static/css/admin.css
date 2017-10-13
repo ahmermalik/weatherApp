@@ -1,5 +1,5 @@
 .navbar {
-    background-color: #333;
+    background-color: #08C;
     overflow: hidden;
     position: fixed;
     bottom: 0;
@@ -24,7 +24,7 @@
 
 
 .navbar a.active {
-    background-color: #4CAF50;
+    background-color: #27757c;
     color: white;
 
 }
@@ -112,3 +112,6 @@ h1 {
     color: #27757c;
 
 }
+
+
+
