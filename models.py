@@ -10,3 +10,4 @@ DB = connect(
         'DATABASE_URL',
         'postgres://localhost:5432/Weather'
     )
+

@@ -32,7 +32,7 @@ class MainHandler(TemplateHandler):
     url = "http://api.openweathermap.org/data/2.5/weather"
 
     city = self.get_body_argument('city_name')
-    querystring = {"q": city, "APIKEY": "c33c99977dff2b8b60a9b4be2d2046fd"}
+    querystring = {"q": city, "APIKEY": "c33c99977dff2b8b60a9b4be2d2046fd", "units": "imperial"}
     response = requests.get(url, params=querystring)
     print(response.json())
     self.render_template("home.html", {'data': response.json()}) ##self.render is the template and the 'data': response.json() is the context.

@@ -15,7 +15,11 @@
 </form>
 
 {% if data %}
-<div> <h1> {{ data.name }}:</h1> </div> <div> {{ data.main.temp }}</div>
+<div> <h1>{{ data.name }}'s currently experiencing {{ data.weather[0].description }}</h1> </div>
+<div> Current Temperature: {{ data.main.temp }} ℉</div>
+<div>24 hour high: {{ data.main.temp_max }} ℉ </div>
+<div>24 hour low: {{ data.main[2] }} ℉ </div>
+<div></div>
 {% endif %}
 
 {% endblock %}
@@ -24,7 +28,9 @@
 
 
 {% block script %}
+
 <script>
+
     $(document).ready(function(){
   $('.input-search').focus(function(){
     $(this).parent().addClass('expanded');
